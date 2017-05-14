@@ -14,7 +14,7 @@ protected:
     bool if_selected = false;
     string text1 = "Choose...";
 public:
-    Menu(int x, int y, int sx, int sy, vector<string> options);
+    Menu(Window * app, int x, int y, int sx, int sy, vector<string> options);
     virtual bool is_selected(int mouse_x, int mouse_y);
     virtual void draw();
     virtual void handle(genv::event ev);

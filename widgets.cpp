@@ -2,12 +2,14 @@
 #include "graphics.hpp"
 using namespace genv;
 
-Widget::Widget(int x, int y, int sx, int sy)
+Widget::Widget(Window * app, int x, int y, int sx, int sy)
 {
+    _app = app;
     _x = x;
     _y = y;
     _size_x = sx;
     _size_y = sy;
+    _app -> add(this);
 }
 
 bool Widget::is_selected(int mouse_x, int mouse_y)

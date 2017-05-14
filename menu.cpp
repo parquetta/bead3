@@ -7,7 +7,7 @@
 using namespace genv;
 using namespace std;
 
-Menu::Menu(int x, int y, int sx, int sy, vector<string> options) : Widget(x, y, sx, sy), _options(options){}
+Menu::Menu(Window * app, int x, int y, int sx, int sy, vector<string> options) : Widget(app, x, y, sx, sy), _options(options){}
 
 bool Menu::is_selected(int mouse_x, int mouse_y)
 {

@@ -7,7 +7,7 @@
 using namespace genv;
 using namespace std;
 
-Number::Number(int x, int y, int sx, int sy, int mini, int maxi) : Widget(x, y, sx, sy), _mini(mini), _maxi(maxi), _number(mini) {}
+Number::Number(Window * app, int x, int y, int sx, int sy, int mini, int maxi) : Widget(app, x, y, sx, sy), _mini(mini), _maxi(maxi), _number(mini) {}
 
 bool Number::is_selected(int mouse_x, int mouse_y)
 {
