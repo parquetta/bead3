@@ -32,13 +32,13 @@ void Number::handle(event ev) {
     if(ev.type == ev_key && (ev.keycode == key_down) && _number > _mini) {
         _number --;
     }
-    if(ev.type == ev_key && (ev.keycode == key_up) && _number < _maxi){
+    if(ev.type == ev_key && (ev.keycode == key_up) && _number < _maxi) {
         _number ++;
     }
     if(ev.type == ev_key && (ev.keycode == key_pgdn) && _number >= _mini+10) {
         _number -= 10;
     }
-    if(ev.type == ev_key && (ev.keycode == key_pgup) && _number <= _maxi-10){
+    if(ev.type == ev_key && (ev.keycode == key_pgup) && _number <= _maxi-10) {
         _number += 10;
     }
     if(ev.type == ev_mouse && ev.button == btn_left && _x + _size_x - (_size_y/2) < ev.pos_x && ev.pos_x < _x + _size_x && _y < ev.pos_y && ev.pos_y < _y + (_size_y/2)-1 && _number < _maxi) {
