@@ -11,6 +11,7 @@ class Widget {
 protected:
     int _x, _y, _size_x, _size_y;
     Window * _app;
+   bool _active;
 public:
     Widget(Window * app, int x, int y, int sx, int sy);
     virtual bool is_selected(int mouse_x, int mouse_y);
