@@ -17,6 +17,7 @@ public:
     void handle(genv::event ev);
     void setS(string newS);
     void setColor(int r, int g, int b);
+    bool is_red();
 };
 
 #endif // STATIC_TEXT_HPP_INCLUDED

@@ -23,6 +23,8 @@ protected:
     vector<vector<Static*> > sudoku;
     int column;
     int row;
+    Button * b;
+    Static * s;
 public:
     MyWindow(int x, int y) : Window(x, y)
     {
@@ -48,10 +50,9 @@ public:
             {
                 int num;
                 f >> num;
-                if (num > 0) numbers[i][j] = num;
+                numbers[i][j] = num;
             }
         }
-
         for(int i = 0; i < numbers.size(); i++)
         {
             for(int j = 0; j < numbers[i].size(); j++)
@@ -69,6 +70,9 @@ public:
             Button * numberset = new Button(this, 70+i*19, 230, 20, 20, ss.str(), ss.str());
         }
 
+        b = new Button(this, 85, 280, 150, 20, "check", "Ellenorzes");
+        s = new Static(this, 85, 310, 250, 20, "", 140, 0, 27);
+
     }
     void action(string tag)
     {
@@ -78,6 +82,11 @@ public:
             {
                 sudoku[i][j] -> setColor(0, 0, 0);
             }
+        }
+
+        if(tag == "check")
+        {
+            finished();
         }
 
         if(tag == "1")
@@ -226,6 +235,23 @@ public:
                 }
             }
         }
+    }
+
+
+    void finished()
+    {
+        for(int i = 0; i < numbers.size(); i++)
+        {
+            for(int j = 0; j < numbers[i].size(); j++)
+            {
+                if(numbers[i][j] == 0 || sudoku[i][j] -> is_red())
+                {
+                    s -> setS("Nem jo:(");
+                    return;
+                }
+            }
+        }
+        s -> setS("Jo:)");
     }
 
 
