@@ -43,10 +43,6 @@
 		<Unit filename="button.cpp" />
 		<Unit filename="button.hpp" />
 		<Unit filename="main.cpp" />
-		<Unit filename="menu.cpp" />
-		<Unit filename="menu.hpp" />
-		<Unit filename="number.cpp" />
-		<Unit filename="number.hpp" />
 		<Unit filename="static_text.cpp" />
 		<Unit filename="static_text.hpp" />
 		<Unit filename="widgets.cpp" />

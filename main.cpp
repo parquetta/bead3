@@ -72,6 +72,14 @@ public:
     }
     void action(string tag)
     {
+        for (int i = 0; i < sudoku.size(); i++)
+        {
+            for (int j = 0; j < sudoku[i].size(); j++)
+            {
+                sudoku[i][j] -> setColor(0, 0, 0);
+            }
+        }
+
         if(tag == "1")
         {
             numbers[row][column] = 1;
@@ -128,7 +136,7 @@ public:
 
     void is_correct()
     {
-        //oszlop ellen�rz�s
+        //oszlop ellenõrzés
         vector<bool> errors(numbers.size(), false);
         for(int i = 0; i < numbers.size(); i++)
         {
@@ -147,10 +155,6 @@ public:
                 if(numbers[i][l] > 0 && errors[numbers[i][l] - 1])
                 {
                     sudoku[i][l] -> setColor(255, 0, 0);
-                }
-                else
-                {
-                    sudoku[i][l] -> setColor(0, 0, 0);
                 }
             }
             for(int m = 0; m < errors.size(); m++)
@@ -178,10 +182,6 @@ public:
                 {
                     sudoku[l][j] -> setColor(255, 0, 0);
                 }
-                else
-                {
-                    sudoku[l][j] -> setColor(0, 0, 0);
-                }
             }
             for(int m = 0; m < errors.size(); m++)
             {
@@ -189,8 +189,45 @@ public:
             }
         }
 
-
+        //3x3-as blokkok ellenőrzése
+        for(int i = 0; i < numbers.size()/3; i++)
+        {
+            for(int j = 0; j < numbers[i].size()/3; j++)
+            {
+                for(int k = numbers.size()/3*i; k < numbers.size()/3*i + numbers.size()/3; k++)
+                {
+                    for(int l = numbers[i].size()/3*j; l < numbers[i].size()/3*j + numbers[i].size()/3; l++)
+                    {
+                        for(int m = numbers.size()/3*i; m < numbers.size()/3*i + numbers.size()/3; m++)
+                        {
+                            for(int n = numbers[i].size()/3*j; n < numbers[i].size()/3*j + numbers[i].size()/3; n++)
+                            {
+                                if((k != m && l != n) && numbers[k][l] > 0 && numbers[k][l] == numbers[m][n])
+                                {
+                                    errors[numbers[k][l] - 1] = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                for(int k = numbers.size()/3*i; k < numbers.size()/3*i + numbers.size()/3; k++)
+                {
+                    for(int l = numbers[i].size()/3*j; l < numbers[i].size()/3*j + numbers[i].size()/3; l++)
+                    {
+                        if(numbers[k][l] > 0 && errors[numbers[k][l] - 1])
+                        {
+                            sudoku[k][l] -> setColor(255, 0, 0);
+                        }
+                    }
+                }
+                for(int m = 0; m < errors.size(); m++)
+                {
+                    errors[m] = false;
+                }
+            }
+        }
     }
+
 
     void run()
     {
